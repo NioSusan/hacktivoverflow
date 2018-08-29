@@ -6,9 +6,9 @@ const authAdmin = auth(['admin'])
 
 const {getAnswers, getAnswer, newAnswer, updateAnswer} = require('../controllers/answer');
 
-router.get('/answers', getAnswers)
-router.post('/answers', newAnswer)
-router.get('/answers/:id', getAnswer)
-router.put('/answers/:id', updateAnswer)
+router.get('/answers',isLogin, getAnswers)
+router.post('/answers', isLogin, authUser, newAnswer)
+router.get('/answers/:id', isLogin, authUser, getAnswer)
+router.put('/answers/:id', isLogin, authUser, updateAnswer)
 
 module.exports = router;
